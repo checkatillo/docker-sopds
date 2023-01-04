@@ -33,7 +33,7 @@ ADD scripts/superuser.exp /superuser.exp
 RUN rm -rf /var/cache/apk/* && \
      rm -rf /tmp/* && \
 apk update && \
-apk add --no-cache -U tzdata unzip build-base libxml2-dev libxslt-dev postgresql-dev libffi-dev libc-dev jpeg-dev zlib-dev \
+apk add --no-cache -U tzdata unzip build-base libxml2-dev libxslt-dev postgresql-server-dev-14 libffi-dev libc-dev jpeg-dev zlib-dev \
 && cp /usr/share/zoneinfo/Europe/Moscow /etc/localtime \
 && echo "Europe/Moscow" > /etc/timezone \
 && unzip sopds.zip \
@@ -54,9 +54,9 @@ apk add --no-cache -U tzdata unzip build-base libxml2-dev libxslt-dev postgresql
 && ln -sT /sopds/convert/fb2c/fb2conv /sopds/convert/fb2c/fb2epub \
 && ln -sT /sopds/convert/fb2c/fb2conv /sopds/convert/fb2c/fb2mobi \
 && mv /superuser.exp /sopds/superuser.exp \
-&& apk del tzdata unzip build-base libxml2-dev libxslt-dev postgresql-dev libffi-dev libc-dev jpeg-dev zlib-dev \
+&& apk del tzdata unzip build-base libxml2-dev libxslt-dev postgresql-server-dev-14 libffi-dev libc-dev jpeg-dev zlib-dev \
 && rm -rf /root/.cache/ \
-&& apk add --no-cache -U bash libxml2 libxslt libffi libjpeg zlib postgresql expect \
+&& apk add --no-cache -U bash libxml2 libxslt libffi libjpeg zlib postgresql-14 expect \
 && chmod +x /start.sh \
 && mkdir -p /sopds/tmp/ \
 && chmod ugo+w /sopds/tmp/ \
